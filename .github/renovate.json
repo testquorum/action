@@ -1,0 +1,25 @@
+{
+  "$schema": "https://docs.renovatebot.com/renovate-schema.json",
+  "extends": ["config:recommended", "helpers:pinGitHubActionDigests"],
+  "lockFileMaintenance": {
+    "enabled": true,
+    "automerge": true
+  },
+  "packageRules": [
+    {
+      "matchManagers": ["github-actions", "npm"],
+      "automerge": true
+    }
+  ],
+  "customManagers": [
+    {
+      "customType": "regex",
+      "managerFilePatterns": ["/^action/version\\.ts$/"],
+      "matchStrings": [
+        "datasource=(?<datasource>\\S+)\\s+depName=(?<depName>\\S+)\\s+packageName=(?<packageName>\\S+)\\s+currentValue=(?<currentValue>\\S+)\\s*\\nexport const PINNED_VERSION = \"(?<currentDigest>[a-f0-9]{40})\""
+      ]
+    }
+  ],
+  "rebaseWhen": "behind-base-branch",
+  "schedule": ["after 11pm on Monday"]
+}

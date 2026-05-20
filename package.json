@@ -1,0 +1,30 @@
+{
+  "name": "testquorum-action",
+  "version": "0.1.0",
+  "description": "GitHub Action to download and run testquorum-runner",
+  "main": "dist/index.js",
+  "type": "module",
+  "scripts": {
+    "build": "ncc build action/index.ts -o dist --target es2022 --license licenses.txt",
+    "lint": "tsc --noEmit",
+    "test": "vitest run --exclude dist",
+    "test:watch": "vitest"
+  },
+  "keywords": [
+    "testquorum",
+    "github-actions"
+  ],
+  "author": "",
+  "license": "MIT",
+  "dependencies": {
+    "@actions/core": "^3.0.1",
+    "@actions/exec": "^3.0.0",
+    "@actions/tool-cache": "^4.0.0"
+  },
+  "devDependencies": {
+    "@types/node": "^25.6.0",
+    "@vercel/ncc": "^0.38.4",
+    "typescript": "^6.0.3",
+    "vitest": "^4.1.5"
+  }
+}
