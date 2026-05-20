@@ -1,0 +1,37 @@
+name: ci
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+jobs:
+  build:
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v5
+      - uses: actions/setup-node@v5
+        with:
+          node-version: "24"
+          cache: npm
+      - run: npm ci
+      - run: npm run lint
+      - run: npm test
+      - name: Verify dist/ is up to date
+        run: |
+          npm run build
+          if ! git diff --quiet -- dist/; then
+            echo "dist/ is out of date. Run 'npm run build' and commit the result." >&2
+            git --no-pager diff -- dist/
+            exit 1
+          fi
+
+  smoke:
+    needs: [build]
+    strategy:
+      matrix:
+        os: [ubuntu-24.04, ubuntu-24.04-arm]
+    runs-on: ${{ matrix.os }}
+    steps:
+      - uses: actions/checkout@v5
+      - uses: ./

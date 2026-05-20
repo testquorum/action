@@ -1,0 +1,12 @@
+name: "TestQuorum Runner"
+description: "Download and run testquorum-runner in CI"
+inputs:
+  version:
+    description: "Override the pinned testquorum-runner version. Defaults to the value pinned in the action source."
+    required: false
+  flake-ref:
+    description: "Nix flake reference to build testquorum-runner from if the binary download returns 404. Without this input, a missing binary is a hard error."
+    required: false
+runs:
+  using: "node24"
+  main: "./dist/index.js"
