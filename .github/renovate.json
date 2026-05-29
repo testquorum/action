@@ -14,9 +14,12 @@
   "customManagers": [
     {
       "customType": "regex",
-      "managerFilePatterns": ["/^action/version\\.ts$/"],
+      "managerFilePatterns": [
+        "/^action/version\\.ts$/",
+        "/^dist/index\\.js$/"
+      ],
       "matchStrings": [
-        "datasource=(?<datasource>\\S+)\\s+depName=(?<depName>\\S+)\\s+packageName=(?<packageName>\\S+)\\s+currentValue=(?<currentValue>\\S+)\\s*\\nexport const PINNED_VERSION = \"(?<currentDigest>[a-f0-9]{40})\""
+        "datasource=(?<datasource>\\S+)\\s+depName=(?<depName>\\S+)\\s+packageName=(?<packageName>\\S+)\\s+currentValue=(?<currentValue>\\S+)\\s*\\n(?:export )?const PINNED_VERSION = \"(?<currentDigest>[a-f0-9]{40})\""
       ]
     }
   ],
