@@ -34610,7 +34610,7 @@ async function resolveBinary(opts) {
 
 ;// CONCATENATED MODULE: ./action/version.ts
 // renovate: datasource=git-refs depName=testquorum-rs packageName=https://github.com/testquorum/testquorum-rs currentValue=main
-const PINNED_VERSION = "a01a8ece226d1403a104d021704142a271189598";
+const PINNED_VERSION = "4ebd4bbf7887ac6b38454407e05eb4e1a7705df6";
 
 ;// CONCATENATED MODULE: ./action/index.ts
 
