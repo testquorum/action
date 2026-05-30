@@ -7,6 +7,9 @@ inputs:
   flake-ref:
     description: "Nix flake reference to build testquorum-runner from if the binary download returns 404. Without this input, a missing binary is a hard error."
     required: false
+  token:
+    description: "TestQuorum auth token. Passed to testquorum-runner via the TQ_AUTH_TOKEN environment variable. If empty or unset, no environment variable is set."
+    required: false
 runs:
   using: "node24"
   main: "./dist/index.js"

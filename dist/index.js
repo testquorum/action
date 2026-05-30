@@ -33468,7 +33468,7 @@ function exportVariable(name, val) {
  * ```
  */
 function core_setSecret(secret) {
-    issueCommand('add-mask', {}, secret);
+    command_issueCommand('add-mask', {}, secret);
 }
 /**
  * Prepends inputPath to the PATH (for this action and future actions)
@@ -34621,12 +34621,17 @@ const DEFAULT_BASE_URL = "https://assets.testquorum.dev/binaries/testquorum-runn
 async function main() {
     const version = getInput("version") || PINNED_VERSION;
     const flakeRef = getInput("flake-ref") || undefined;
+    const token = getInput("token") || undefined;
     const binPath = await resolveBinary({
         baseUrl: DEFAULT_BASE_URL,
         version,
         flakeRef,
     });
     info(`Running ${binPath}`);
+    if (token !== undefined) {
+        core_setSecret(token);
+        process.env.TQ_AUTH_TOKEN = token;
+    }
     const exitCode = await exec_exec(binPath, [], { ignoreReturnCode: true });
     if (exitCode !== 0) {
         setFailed(`testquorum-runner exited with ${exitCode}`);
