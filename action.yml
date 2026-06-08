@@ -1,5 +1,8 @@
 name: "TestQuorum Runner"
 description: "Download and run testquorum-runner in CI"
+branding:
+  icon: "bar-chart"
+  color: "purple"
 inputs:
   version:
     description: "Override the pinned testquorum-runner version. Defaults to the value pinned in the action source."

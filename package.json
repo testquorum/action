@@ -14,8 +14,16 @@
     "testquorum",
     "github-actions"
   ],
-  "author": "",
+  "author": "TestQuorum",
   "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/testquorum/action.git"
+  },
+  "bugs": {
+    "url": "https://github.com/testquorum/action/issues"
+  },
+  "homepage": "https://github.com/testquorum/action#readme",
   "dependencies": {
     "@actions/core": "^3.0.1",
     "@actions/exec": "^3.0.0",
