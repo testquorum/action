@@ -34622,6 +34622,7 @@ async function main() {
     const version = getInput("version") || PINNED_VERSION;
     const flakeRef = getInput("flake-ref") || undefined;
     const token = getInput("token") || undefined;
+    const localOnly = getBooleanInput("local_only");
     const binPath = await resolveBinary({
         baseUrl: DEFAULT_BASE_URL,
         version,
@@ -34632,7 +34633,8 @@ async function main() {
         core_setSecret(token);
         process.env.TQ_AUTH_TOKEN = token;
     }
-    const exitCode = await exec_exec(binPath, [], { ignoreReturnCode: true });
+    const args = localOnly ? ["--local"] : [];
+    const exitCode = await exec_exec(binPath, args, { ignoreReturnCode: true });
     if (exitCode !== 0) {
         setFailed(`testquorum-runner exited with ${exitCode}`);
     }
