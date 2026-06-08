@@ -10,6 +10,10 @@ inputs:
   token:
     description: "TestQuorum auth token. Passed to testquorum-runner via the TQ_AUTH_TOKEN environment variable. If empty or unset, no environment variable is set."
     required: false
+  local_only:
+    description: "If true, run testquorum-runner with the --local flag."
+    required: false
+    default: "false"
 runs:
   using: "node24"
   main: "./dist/index.js"
