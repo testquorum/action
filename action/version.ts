@@ -1,2 +1,2 @@
 // renovate: datasource=git-refs depName=testquorum-rs packageName=https://github.com/testquorum/testquorum-rs currentValue=main
-export const PINNED_VERSION = "fe59a66b1070e95d58c6242f2374c6a2a3829347";
+export const PINNED_VERSION = "0a490f4f11037ea32f3a3fafcbeb5622f2887144";
